@@ -46,13 +46,18 @@ class _DashboardScreenState extends State<DashboardScreen>
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
-              showSearch(context: context, delegate: OurSearchDelegate(countriesList: data.countries.toList()));
+              showSearch(
+                  context: context,
+                  delegate: OurSearchDelegate(
+                      countriesList: data.countries.toList()));
             },
           ),
         ],
       ),
       body: data == null
-          ? Center(child: CircularProgressIndicator())
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
           : RefreshIndicator(
               onRefresh: getData,
               child: CustomScrollView(
@@ -175,7 +180,7 @@ class _DashboardScreenState extends State<DashboardScreen>
 
   Widget buildDetailText({int count, Color color, String text}) {
     return Padding(
-      padding: const EdgeInsets.only(left: 5.0,bottom: 5),
+      padding: const EdgeInsets.only(left: 5.0, bottom: 5),
       child: Text(
         "$text: ${formatter.format(count)}",
         style: TextStyle(color: color),
@@ -196,5 +201,4 @@ class _DashboardScreenState extends State<DashboardScreen>
   }
 
   final formatter = NumberFormat.decimalPattern('en-US');
-
 }
